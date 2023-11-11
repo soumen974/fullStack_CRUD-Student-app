@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function AddUser() {
-
- 
 
   const [name, setName] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [addedMsg,setAddedMsg]=useState(false);
+ 
+  let navigate=useNavigate();
 
   const HandleForm = (e) => {
     e.preventDefault();
@@ -27,12 +28,19 @@ export default function AddUser() {
           setAddedMsg(false);
         }, 5000); 
       
-        setName('');
-        setUsername('');
-        setEmail('');
+        EmptyForm();
+        setTimeout(() => {
+          navigate("/");
+        }, 1000); 
+
       });
   };
 
+  const EmptyForm=()=>{
+    setName('');
+    setUsername('');
+    setEmail('');
+  }
 
 
  
@@ -55,10 +63,12 @@ export default function AddUser() {
                 
                 <div className='flex gap-4'>
                   <input type="button" onClick={HandleForm} value="Add" className='bg-slate-800 cursor-pointer text-white w-full p-2 rounded-sm' />
-                  <input type="button" value="Cancel" className='bg-red-700 cursor-pointer text-white w-full p-2 rounded-sm' />
+                  <input type="button" onClick={EmptyForm} value="Cancel" className='bg-red-700 cursor-pointer text-white w-full p-2 rounded-sm' />
 
                 </div>
-                <div className={`${addedMsg ? "block" : "hidden"} text-green-500 text-center border border-green-500 p-4`}>Successfully added</div>
+                <div className={`${addedMsg ? "block" : "hidden"} text-green-500 text-center border border-green-500 p-0 flex justify-between`}>
+                   <h4 className='p-2'>Successfully added</h4> <button onClick={() => setAddedMsg(false)} className='bg-red-700 py-2 px-5 text-white'>close</button> 
+                </div>
               </form>
     
             </div>
