@@ -24,20 +24,20 @@ export default function Home() {
 
   return (
     <>
-     <header className="bg-white shadow pt-14">
+     <header className=" shadow  pt-14">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Home</h1>
+          <h1 className="text-3xl font-semibold text-gray-900">Student Details</h1>
         </div>
       </header>
-      <main>
+      <main className='home'>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
+            <div className="border-4 border-dashed border-gray-200 rounded-lg ">
 
                   <div className="flex flex-col">
                     <div className="overflow-x-auto">
                       <div className="p-1.5 w-full inline-block align-middle">
-                        <div className="overflow-hidden border rounded-lg">
+                        <div className="overflow-scroll border rounded-lg">
                           <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
                               <tr>
