@@ -1,5 +1,3 @@
-Certainly! Here's an expanded version for your GitHub README:
-
 # FullStack CRUD Student App
 
 This is a full-stack application that performs CRUD (Create, Read, Update, Delete) operations on student details. The frontend is built using React.js, and the backend is developed with Spring Boot.
