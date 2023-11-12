@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Home() {
  
   const [users, setUsers] = useState([])
+  const {id}=useParams();
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
 
-  useEffect(()=>{
+  const loadUsers =()=>{
     fetch('http://localhost:8080/usersdetails')
     .then((response) => {
       if (!response.ok) {
@@ -21,7 +24,25 @@ export default function Home() {
     .catch((error) => {
       console.error('Error fetching data:', error);
     });
-  },[])
+  }
+
+  const deleteUser = (id) => {
+    fetch(`http://localhost:8080/usersdetails/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        loadUsers();
+      })
+      .catch(error => {
+        // Log the error for debugging
+        console.error('Error deleting user:', error);
+      });
+  };
+  
 
   return (
     <>
@@ -81,37 +102,30 @@ export default function Home() {
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                              {
-                                users.map((user,index)=>(
-
-                                  <tr>
-                                <td key={index} className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                  {index+1}
-                                </td>
-                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{user.name}</td>
-                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{user.username}</td>
-                                <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {user.email}
-                                </td>
-                                <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                  <Link
-                                  to={`/usersdetails/${user.id}`}
-                                   className="text-green-500 hover:text-green-700" href="#">
-                                    Edit
-                                  </Link>
-                                </td>
-                                <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                  <a className="text-red-500 hover:text-red-700" href="#">
-                                    Delete
-                                  </a>
-                                </td>
+                                {users.map((user, index) => (
+                                  <tr key={index}>
+                                    <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                                      {index + 1}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{user.name}</td>
+                                    <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{user.username}</td>
+                                    <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                      {user.email}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                      <Link to={`/usersdetails/${user.id}`} className="text-green-500 hover:text-green-700">
+                                        Edit
+                                      </Link>
+                                    </td>
+                                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                      <button onClick={() => deleteUser(user.id)} className="text-red-500 hover:text-red-700">
+                                        Delete
+                                      </button>
+                                    </td>
                                   </tr>
+                                ))}
+                          </tbody>
 
-                                ))
-                              }
-                              
-
-                            </tbody>
                           </table>
                         </div>
                       </div>
