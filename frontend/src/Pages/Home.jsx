@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 export default function Home() {
  
@@ -93,9 +94,11 @@ export default function Home() {
                                 {user.email}
                                 </td>
                                 <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                  <a className="text-green-500 hover:text-green-700" href="#">
+                                  <Link
+                                  to={`/usersdetails/${user.id}`}
+                                   className="text-green-500 hover:text-green-700" href="#">
                                     Edit
-                                  </a>
+                                  </Link>
                                 </td>
                                 <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                   <a className="text-red-500 hover:text-red-700" href="#">
