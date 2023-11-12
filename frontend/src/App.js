@@ -1,7 +1,6 @@
 import './App.css';
-import Navbar from "./Component/Navbar";
 import Home from './Pages/Home';
-import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import UserLayout from './Pages/UserLayout';
 import AddUser from "./Users/AddUser";
 import EditUser from './Users/EditUser';
