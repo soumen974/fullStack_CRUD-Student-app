@@ -49,12 +49,17 @@ export default function AddUser() {
   };
 
   const EmptyForm = () => {
+
     setUser({
       name: "",
       username: "",
       email: ""
     });
-  };
+
+    if (user.name === '' || user.username === '' || user.email === '') {
+      navigate("/");
+    }
+    };
 
   return (
     <>
