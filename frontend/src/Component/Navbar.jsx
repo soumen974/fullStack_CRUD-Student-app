@@ -33,26 +33,7 @@ function Navbar() {
                     Add New User
                   </Link>
 
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Projects
-                  </a>
 
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Calendar
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Reports
-                  </a>
                 </div>
               </div>
             </div>
@@ -129,26 +110,7 @@ function Navbar() {
                   Add new User
                 </Link>
 
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Projects
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Calendar
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Reports
-                </a>
+               
               </div>
             </div>
           )}
